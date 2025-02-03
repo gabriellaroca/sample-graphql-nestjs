@@ -15,7 +15,7 @@ export class EscolaService {
       return [];
     }
 
-    for (const escola of await escolas) {
+    for (const escola of escolas) {
       escolaResposta.push({
         id: escola.id,
         nome: escola.nome,
@@ -29,8 +29,6 @@ export class EscolaService {
           alunos: sala.alunos.length,
         })),
       });
-
-      return escolaResposta;
     }
 
     return escolaResposta;
@@ -95,7 +93,7 @@ export class EscolaService {
         id: sala.id,
         nome: sala.nome,
         nivel: sala.nivel,
-        alunos: sala.alunos.length,
+        alunos: sala.alunos?.length || 0,
       })),
     };
   }
