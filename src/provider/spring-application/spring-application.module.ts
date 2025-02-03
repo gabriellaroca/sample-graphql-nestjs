@@ -8,7 +8,7 @@ import { SpringApplicationService } from './spring-application.service';
     HttpModule.registerAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
-        baseURL: configService.get<string>('SPRING_APP_BASE_URL'),
+        baseURL: configService.getOrThrow<string>('SPRING_APP_BASE_URL'),
       }),
       inject: [ConfigService],
     }),
